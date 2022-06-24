@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- <script>let info = {{data}}</script> -->
+	<title>Dashboard</title>
+</head>
+<body>
+	
+	<form id = "master-form" action = "/" method = "POST" enctype="multipart/form-data">
+		<div class="d-flex justify-content-center">
+			<select name = "end_year" type = "text">
+	      <option value = "select">Select end_year</option>
+				{% for x in data[0] %}
+						<option>{{x}}</option>
+				{% endfor %}     
+	    </select>
+
+	    <select name = "topic" type = "text">
+	      <option value = "select">Select a topic</option>
+				{% for x in data[1] %}
+						<option>{{x}}</option>
+				{% endfor %}     
+	    </select>
+
+	    <select name = "sector" type = "text">
+	      <option value = "select">Select a sector</option>
+				{% for x in data[2] %}
+						<option>{{x}}</option>
+				{% endfor %}     
+	    </select>
+
+	    <select name = "region" type = "text">
+	      <option value = "select">Select a region</option>
+				{% for x in data[3] %}
+						<option>{{x}}</option>
+				{% endfor %}     
+	    </select>
+
+	    <select name = "pestle" type = "text">
+	      <option value = "select">Select a pestle</option>
+				{% for x in data[4] %}
+						<option>{{x}}</option>
+				{% endfor %}     
+	    </select>
+	    <input class="btn btn-dark" type="submit" value="Submit" text-align>
+	  </div>
+		
+	</form>
+
+<div class="card p-3 mb-2 bg-dark text-white" >
+  <div class="card-body">
+    <h5 class="card-title">Intensity v/s Sector</h5>
+    <p class="card-text">The graph shows intensity and likelihood of different sectors.</p>
+  </div>
+  <div class = "card-img-bottom" id = "chart1"></div>
+</div>
+
+<div class="card p-3 mb-2 bg-dark text-white" >
+  <div class="card-body">
+    <h5 class="card-title">Pestle v/s Region</h5>
+    <p class="card-text">The graph shows relation between pestle and region.</p>
+  </div>
+  <div class = "card-img-bottom" id = "chart2" ></div>
+</div>
+
+<div class="card p-3 mb-2 bg-dark text-white" >
+  <div class="card-body">
+    <h5 class="card-title">Country v/s Topic</h5>
+    <p class="card-text">The graph shows relevance and likelihood of a topic for a particular country.</p>
+  </div>
+  <div class = "card-img-bottom" id = "chart3"></div>
+</div>
+
+<div class="card p-3 mb-2 bg-dark text-white" >
+  <div class="card-body">
+    <h5 class="card-title">World Map</h5>
+    <p class="card-text">The Map shows work on various sectors for a particular country</p>
+  </div>
+  <div id = "chart4"></div>
+</div>
+
+<div class="card p-3 mb-2 bg-dark text-white" >
+  <div class="card-body">
+    <h5 class="card-title">End_year v/s Start_year</h5>
+    <p class="card-text">The graph shows how much work is done for particular time period.</p>
+  </div>
+  <div class = "card-img-bottom" id = "chart5"></div>
+</div>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<script>
+		var graph1 = {{graph1| safe}}
+		var config = {responsive: true};
+		Plotly.plot("chart1",graph1,{},config)
+		var graph2 = {{graph2| safe}}
+		Plotly.plot("chart2",graph2,{})
+		var graph3 = {{graph3| safe}}
+		Plotly.plot("chart3",graph3,{})
+		var graph4 = {{graph4| safe}}
+		Plotly.plot("chart4",graph4,{})
+		var graph5 = {{graph5| safe}}
+		Plotly.plot("chart5",graph5,{})
+	</script>
+</body>
+</html>
