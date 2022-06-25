@@ -4,45 +4,46 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href = "static/index.css">
 	<!-- <script>let info = {{data}}</script> -->
 	<title>Dashboard</title>
 </head>
 <body>
 	
 	<form id = "master-form" action = "/" method = "POST" enctype="multipart/form-data">
-		<div class="d-flex justify-content-center">
-			<select name = "end_year" type = "text">
-	      <option value = "select">Select end_year</option>
+	  <div class = "d-flex">
+		<select name = "end_year" type = "text">
+	      <option value = "select" class = "select">Select end_year</option>
 				{% for x in data[0] %}
-						<option>{{x}}</option>
+						<option class = "select">{{x}}</option>
 				{% endfor %}     
 	    </select>
 
 	    <select name = "topic" type = "text">
-	      <option value = "select">Select a topic</option>
+	      <option value = "select" class  = "select">Select a topic</option>
 				{% for x in data[1] %}
-						<option>{{x}}</option>
+						<option class = "select">{{x}}</option>
 				{% endfor %}     
 	    </select>
 
 	    <select name = "sector" type = "text">
-	      <option value = "select">Select a sector</option>
+	      <option value = "select" class = "select">Select a sector</option>
 				{% for x in data[2] %}
-						<option>{{x}}</option>
+						<option class = "select">{{x}}</option>
 				{% endfor %}     
 	    </select>
 
 	    <select name = "region" type = "text">
-	      <option value = "select">Select a region</option>
+	      <option value = "select" class = "select">Select a region</option>
 				{% for x in data[3] %}
-						<option>{{x}}</option>
+						<option class = "select">{{x}}</option>
 				{% endfor %}     
 	    </select>
 
 	    <select name = "pestle" type = "text">
-	      <option value = "select">Select a pestle</option>
+	      <option value = "select" class = "select">Select a pestle</option>
 				{% for x in data[4] %}
-						<option>{{x}}</option>
+						<option class = "select">{{x}}</option>
 				{% endfor %}     
 	    </select>
 	    <input class="btn btn-dark" type="submit" value="Submit" text-align>
