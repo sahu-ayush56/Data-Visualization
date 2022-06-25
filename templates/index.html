@@ -50,7 +50,7 @@
 		
 	</form>
 
-<div class="card p-3 mb-2 bg-dark text-white" >
+<div class="card p-3 mb-2 bg-dark text-white">
   <div class="card-body">
     <h5 class="card-title">Intensity v/s Sector</h5>
     <p class="card-text">The graph shows intensity and likelihood of different sectors.</p>
@@ -92,8 +92,7 @@
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	<script>
 		var graph1 = {{graph1| safe}}
-		var config = {responsive: true};
-		Plotly.plot("chart1",graph1,{},config)
+		Plotly.newPlot("chart1",graph1,{})
 		var graph2 = {{graph2| safe}}
 		Plotly.plot("chart2",graph2,{})
 		var graph3 = {{graph3| safe}}

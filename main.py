@@ -14,21 +14,21 @@ def getarray(column):
 
 def plot1(df):
 	data = df.drop(df[(df['sector']=='')|(df['relevance']=='')].index,inplace=False)
-	fig = px.scatter(data, x="sector", y="intensity", color='likelihood', width = 1050)
+	fig = px.scatter(data, x="sector", y="intensity", color='likelihood')
 	
 	# fig.show()
 	return fig
 
 def plot2(df):
 	data = df.drop(df[(df['region']=='') | (df['pestle']=='') | (df['region']=='world')].index,inplace=False)
-	fig = px.density_heatmap(data, x="region", y="pestle", width = 1050)
+	fig = px.density_heatmap(data, x="region", y="pestle")
 	# fig.show()
 	return fig
 
 def plot3(df):
 	data = df.drop(df[(df['topic']=='') | (df['country']=='') | (df['likelihood']=='')].index,inplace=False)
 	data['likelihood'] = pd.to_numeric(data['likelihood'])
-	fig = px.scatter(data, x="topic", y="country", color='relevance', size='likelihood', width = 1050)
+	fig = px.scatter(data, x="topic", y="country", color='relevance', size='likelihood')
 	# fig.show()
 	return fig
 
@@ -48,14 +48,14 @@ def plot4(df):
 	fig = px.choropleth(co, locations="country",locationmode="country names",
                     color="sector_count", # lifeExp is a column of gapminder
                     hover_name="country",hover_data=["sectors"], # column to add to hover information
-                    color_continuous_scale=px.colors.sequential.Plasma, width = 1050)
+                    color_continuous_scale=px.colors.sequential.Plasma)
 	# fig.show()
 	return fig
 
 def plot5(df):
 	data = df.drop(df[(df['start_year']=='')|(df['end_year']=='')].index,inplace=False)
 	data = data.groupby(['start_year','end_year']).size().reset_index().rename(columns={0:'amount_of_work'})
-	fig = px.scatter(data, x="start_year", y="end_year", size="amount_of_work", width = 1050)
+	fig = px.scatter(data, x="start_year", y="end_year", size="amount_of_work")
 	# fig.show()
 	return fig
 
